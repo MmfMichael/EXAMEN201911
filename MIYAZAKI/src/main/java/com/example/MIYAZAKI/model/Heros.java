@@ -13,7 +13,9 @@ public class Heros {
 	@Id
 	@GeneratedValue
 	int idHeros;
-
+	
+	String nom;
+	
 	String description;
 
 	String role;
@@ -26,13 +28,21 @@ public class Heros {
 	public Heros() {
 		super();
 	}
-	
-	public Heros(String description, String role, Films films) {
+
+	public Heros(String nom, String description, String role, Films films) {
 		super();
-		//this.idHeros = idHeros;
+		this.nom = nom;
 		this.description = description;
 		this.role = role;
 		this.films = films;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public String getDescription() {
@@ -70,6 +80,7 @@ public class Heros {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((films == null) ? 0 : films.hashCode());
 		result = prime * result + idHeros;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		return result;
 	}
@@ -95,6 +106,11 @@ public class Heros {
 			return false;
 		if (idHeros != other.idHeros)
 			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
 		if (role == null) {
 			if (other.role != null)
 				return false;
@@ -105,9 +121,10 @@ public class Heros {
 
 	@Override
 	public String toString() {
-		return "Heros [idHeros=" + idHeros + ", description=" + description + ", role=" + role + ", films=" + films
-				+ "]";
+		return "Heros [idHeros=" + idHeros + ", nom=" + nom + ", description=" + description + ", role=" + role
+				+ ", films=" + films + "]";
 	}
+	
 	
 	
 	
